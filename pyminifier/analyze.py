@@ -288,18 +288,11 @@ def find_imported_functions(code):
     
     # Find all matches in the provided code
     matches = pattern.findall(code)
-    print(matches)
-    print(matches)
-    print(matches)
-    print(matches)
-    print(matches)
-    print(matches)
-    print(matches)
-    print(matches)
-    print(matches)
-    
+    second_items = [t[1] for t in matches]
+    result_string = ', '.join(second_items)
+    importslist = [impi.strip() for impi in result_string.split(',')]
     # Return the list of imported functions
-    return matches
+    return importslist
 
 # TODO: Finish this (even though it isn't used):
 def enumerate_dynamic_imports(tokens):
