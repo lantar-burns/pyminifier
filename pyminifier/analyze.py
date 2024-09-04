@@ -280,6 +280,18 @@ def enumerate_global_imports(tokens):
 
     return imported_modules
 
+
+
+def find_imported_functions(code):
+    # Regex pattern to match 'from xxx.yyy import zzz' statements
+    pattern = re.compile(r'from\s+(\w+)\.(\w+)\s+import\s+(\w+)')
+    
+    # Find all matches in the provided code
+    matches = pattern.findall(code)
+    
+    # Extract and return the imported functions
+    return matches
+
 # TODO: Finish this (even though it isn't used):
 def enumerate_dynamic_imports(tokens):
     """
