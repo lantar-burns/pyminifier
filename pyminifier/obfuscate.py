@@ -26,6 +26,7 @@ VAR_REPLACEMENTS = {} # So we can reference what's already been replaced
 FUNC_REPLACEMENTS = {}
 CLASS_REPLACEMENTS = {}
 UNIQUE_REPLACEMENTS = {}
+imports_dont_replace = {}
 
 def obfuscation_machine(use_unicode=False, identifier_length=1):
     """
@@ -85,6 +86,7 @@ def apply_obfuscation(source):
     variables = find_obfuscatables(tokens, obfuscatable_variable)
     classes = find_obfuscatables(tokens, obfuscatable_class)
     functions = find_obfuscatables(tokens, obfuscatable_function)
+    imports_dont_replace = imports_dont_replace + analyze.find_imported_functions(source)
     for variable in variables:
         replace_obfuscatables(
             tokens, obfuscate_variable, variable, name_generator)
@@ -242,6 +244,8 @@ def obfuscatable_function(tokens, index, **kwargs):
     if token_type != tokenize.NAME:
         return None # Skip this token
     if token_string.startswith('__'): # Don't mess with specials
+        return None
+    if token_string in imports_dont_replace:
         return None
     if prev_tok_string == "def":
         return token_string
