@@ -172,7 +172,7 @@ builtins = [
     'app'
 ]
 
-reserved_words = keyword.kwlist + builtins
+reserved_words = keyword.kwlist + builtins + importslist
 
 def enumerate_keyword_args(tokens):
     """
