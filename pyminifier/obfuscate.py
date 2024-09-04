@@ -204,6 +204,8 @@ def obfuscatable_variable(tokens, index, ignore_length=False):
             return None
     if token_string in RESERVED_WORDS:
         return None
+    if token_string in imports_dont_replace:
+        return None
     return token_string
 
 def obfuscatable_class(tokens, index, **kwargs):
@@ -223,6 +225,8 @@ def obfuscatable_class(tokens, index, **kwargs):
     if token_type != tokenize.NAME:
         return None # Skip this token
     if token_string.startswith('__'): # Don't mess with specials
+        return None
+    if token_string in imports_dont_replace:
         return None
     if prev_tok_string == "class":
         return token_string
