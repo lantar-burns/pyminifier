@@ -284,12 +284,12 @@ def enumerate_global_imports(tokens):
 
 def find_imported_functions(code):
     # Regex pattern to match 'from xxx.yyy import zzz' statements
-    pattern = re.compile(r'from\s+(\w+)\.(\w+)\s+import\s+(\w+)')
+    pattern = re.compile(r'from\s+\w+(\.\w+)?\s+import\s+(\w+(?:,\s*\w*)*)')
     
     # Find all matches in the provided code
     matches = pattern.findall(code)
     
-    # Extract and return the imported functions
+    # Return the list of imported functions
     return matches
 
 # TODO: Finish this (even though it isn't used):
