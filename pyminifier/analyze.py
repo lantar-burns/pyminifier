@@ -288,6 +288,15 @@ def find_imported_functions(code):
     
     # Find all matches in the provided code
     matches = pattern.findall(code)
+    print(matches)
+    print(matches)
+    print(matches)
+    print(matches)
+    print(matches)
+    print(matches)
+    print(matches)
+    print(matches)
+    print(matches)
     
     # Return the list of imported functions
     return matches
