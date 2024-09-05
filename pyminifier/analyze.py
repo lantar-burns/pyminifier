@@ -179,7 +179,8 @@ builtins = [
     'request', 
     'session', 
     'url_for', 
-    'secure_filename'
+    'secure_filename', 
+    'basics'
 ]
 
 reserved_words = keyword.kwlist + builtins
