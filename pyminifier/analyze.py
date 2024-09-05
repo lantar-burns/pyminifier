@@ -169,7 +169,17 @@ builtins = [
     'vars',
     'xrange',
     'zip',
-    'app'
+    'app', 
+    'datetime', 
+    'load_dotenv', 
+    'Flask', 
+    'flash', 
+    'redirect', 
+    'render_template', 
+    'request', 
+    'session', 
+    'url_for', 
+    'secure_filename'
 ]
 
 reserved_words = keyword.kwlist + builtins
